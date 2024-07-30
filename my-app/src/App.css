@@ -1,0 +1,159 @@
+.Card-size1 {
+  width: 60%;
+}
+
+.Card-size2 {
+  width: 40%;
+  background-color: rgb(37, 37, 37);
+}
+
+.Image-size {
+  margin-top: 10%;
+  margin-left: 5%;
+  width: 85%;
+  height: 60%;
+}
+
+.pargrap1 {
+  color: rgb(225, 135, 110);
+  font-size: 26px;
+  margin: 0%;
+  font-weight: normal;
+  font-style: normal;
+  line-height: 1.5;
+}
+
+.pargrap2 {
+  font-weight: 400;
+  letter-spacing: 0.00938em;
+  font-size: 1rem;
+  margin: 0%;
+  line-height: 1.5;
+}
+
+.pargrap3 {
+  color: aliceblue;
+  font-weight: 400;
+  letter-spacing: 0.00938em;
+  font-size: 1rem;
+  margin: 0%;
+  line-height: 1.5;
+}
+
+.signIn-link {
+  font-weight: 400;
+  letter-spacing: 0.00938em;
+  font-size: 0.9rem;
+  margin: 0%;
+  line-height: 1.5;
+  text-decoration: none;
+  font-size: 14px;
+  color: rgb(51, 122, 183);
+}
+
+.Login-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.welcome-text {
+  margin: 0px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.00938em;
+  font-size: 28px;
+  color: rgb(211, 211, 211);
+}
+
+.signIn-text {
+  margin: 4px 0px 0px;
+  font-weight: 400;
+  line-height: 1.5;
+  letter-spacing: 0.00938em;
+  font-size: 20px;
+  color: rgb(211, 211, 211);
+}
+
+.login-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-left: 8%;
+  width: 90%;
+  height: 50%;
+  margin-top: 30%;
+}
+
+.label-text {
+  color: rgb(211, 211, 211);
+  font-size: 12px;
+  letter-spacing: 0.02957em;
+}
+
+.input-fields {
+  border: 1px solid rgba(255, 255, 255, 0.322);
+  border-radius: 4px;
+  margin-bottom: 4px;
+  height: 25px;
+  width: 95%;
+  color: white;
+  background-color: rgba(78, 73, 73, 0.719);
+  padding: 3px;
+  font-size: 14px;
+  margin-top: 1%;
+}
+
+.forgot-text {
+  margin: 0% 0% 0% 75%;
+  text-decoration: none;
+  font-size: 14px;
+  color: rgb(51, 122, 183);
+  min-width: auto;
+}
+
+.error-text {
+  color: rgba(255, 0, 0, 0.753);
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0.03333em;
+}
+
+.button-grey {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  line-height: 1.75;
+  letter-spacing: 0.02857em;
+  min-width: 64px;
+  padding: 3px 16px;
+  width: 97%;
+  margin: 3% 5% 3% 2%;
+  color: rgb(255, 255, 255);
+  border: none;
+  outline: none;
+  font-size: 18px;
+  border-radius: 40px;
+  background-color: grey;
+}
+
+.login-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  line-height: 1.75;
+  letter-spacing: 0.02857em;
+  min-width: 64px;
+  padding: 3px 16px;
+  width: 97%;
+  margin: 3% 5% 3% 2%;
+  color: rgb(255, 255, 255);
+  border: none;
+  outline: none;
+  font-size: 18px;
+  border-radius: 40px;
+  background-color: rgb(255, 93, 59);
+}

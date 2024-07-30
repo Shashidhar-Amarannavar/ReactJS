@@ -1,8 +1,10 @@
 import './App.css';
+import Card from './Components/Login';
 
 function App() {
   return (
-    <div >
+    <div>
+      <Card />
     </div>
   );
 }
