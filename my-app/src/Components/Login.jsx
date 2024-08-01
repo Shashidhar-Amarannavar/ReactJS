@@ -13,29 +13,41 @@ function Login() {
   });
 
   const displayData = (e) => {
-    e.preventDefault();
-    if (!emailRegex.test(cred.emailId)) {
-      setErrored((errored) => ({
-        ...errored,
-        emailError: "Please enter a valid email address"
-      }));
-    } else {
+    if (emailRegex.test(cred.emailId) && passwordRegex.test(cred.password)) {
       setErrored({
         ...errored,
-        emailError: ""
-      });
-    }
-
-    if (!passwordRegex.test(cred.password)) {
-      setErrored((errored) => ({
-        ...errored,
-        passwordError: "Please enter a valid password"
-      }));
-    } else {
-      setErrored({
-        ...errored,
+        emailError: "",
         passwordError: ""
       });
+    } else if (
+      emailRegex.test(cred.emailId) ||
+      passwordRegex.test(cred.password)
+    ) {
+      emailRegex.test(cred.emailId)
+        ? setErrored((errored) => ({
+            ...errored,
+            emailError: ""
+          }))
+        : setErrored((errored) => ({
+            ...errored,
+            emailError: "Please enter a valid email address"
+          }));
+
+      passwordRegex.test(cred.password)
+        ? setErrored((errored) => ({
+            ...errored,
+            passwordError: ""
+          }))
+        : setErrored((errored) => ({
+            ...errored,
+            passwordError: "Please enter a valid password"
+          }));
+    } else {
+      setErrored((errored) => ({
+        ...errored,
+        passwordError: "Please enter a valid password",
+        emailError: "Please enter a valid email address"
+      }));
     }
   };
 
