@@ -92,7 +92,7 @@ function Login() {
           </div>
           <a
             className="forgot-text"
-            href="https://github.com/Shashidhar-Amarannavar/SeleniumWithCucumber"
+            href="https://github.com/Shashidhar-Amarannavar/ReactJS/tree/main/my-app"
           >
             Forgot Password?
           </a>
@@ -111,7 +111,7 @@ function Login() {
           </div>
           <a
             className="signIn-link"
-            href="https://github.com/Shashidhar-Amarannavar/SeleniumWithCucumber"
+            href="https://github.com/Shashidhar-Amarannavar/ReactJS/tree/main/my-app"
           >
             Sign up
           </a>
