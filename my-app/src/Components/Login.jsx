@@ -13,16 +13,7 @@ function Login() {
   });
 
   const displayData = (e) => {
-    if (emailRegex.test(cred.emailId) && passwordRegex.test(cred.password)) {
-      setErrored({
-        ...errored,
-        emailError: "",
-        passwordError: ""
-      });
-    } else if (
-      emailRegex.test(cred.emailId) ||
-      passwordRegex.test(cred.password)
-    ) {
+    if (emailRegex.test(cred.emailId) || passwordRegex.test(cred.password)) {
       emailRegex.test(cred.emailId)
         ? setErrored((errored) => ({
             ...errored,
@@ -48,6 +39,10 @@ function Login() {
         passwordError: "Please enter a valid password",
         emailError: "Please enter a valid email address"
       }));
+    }
+
+    if (emailRegex.test(cred.emailId) && passwordRegex.test(cred.password)) {
+      alert("Login Successfull !!!");
     }
   };
 
@@ -78,7 +73,7 @@ function Login() {
                 }}
               />
               <div style={{ height: "4px" }}>
-                {errored.emailError && (
+                {errored.emailError && cred.emailId && (
                   <span className="error-text">{errored.emailError}</span>
                 )}
               </div>
@@ -96,16 +91,13 @@ function Login() {
                 }}
               />
               <div style={{ height: "4px" }}>
-                {errored.passwordError && (
+                {errored.passwordError && cred.password && (
                   <span className="error-text">{errored.passwordError}</span>
                 )}
               </div>
             </div>
           </div>
-          <a
-            className="forgot-text"
-            href="https://github.com/Shashidhar-Amarannavar/ReactJS/tree/main/my-app"
-          >
+          <a className="forgot-text" href="/forgotpassword">
             Forgot Password?
           </a>
           <button
@@ -121,10 +113,7 @@ function Login() {
           <div>
             <p className="pargrap3">Don't have an account?</p>
           </div>
-          <a
-            className="signIn-link"
-            href="https://github.com/Shashidhar-Amarannavar/ReactJS/tree/main/my-app"
-          >
+          <a className="signIn-link" href="/signup">
             Sign up
           </a>
         </div>
