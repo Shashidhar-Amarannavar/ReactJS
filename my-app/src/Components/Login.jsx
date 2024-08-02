@@ -13,16 +13,7 @@ function Login() {
   });
 
   const displayData = (e) => {
-    if (emailRegex.test(cred.emailId) && passwordRegex.test(cred.password)) {
-      setErrored({
-        ...errored,
-        emailError: "",
-        passwordError: ""
-      });
-    } else if (
-      emailRegex.test(cred.emailId) ||
-      passwordRegex.test(cred.password)
-    ) {
+    if (emailRegex.test(cred.emailId) || passwordRegex.test(cred.password)) {
       emailRegex.test(cred.emailId)
         ? setErrored((errored) => ({
             ...errored,
@@ -104,7 +95,7 @@ function Login() {
           </div>
           <a
             className="forgot-text"
-            href="https://github.com/Shashidhar-Amarannavar/ReactJS/tree/main/my-app"
+            href="/forgotpassword"
           >
             Forgot Password?
           </a>
@@ -123,7 +114,7 @@ function Login() {
           </div>
           <a
             className="signIn-link"
-            href="https://github.com/Shashidhar-Amarannavar/ReactJS/tree/main/my-app"
+            href="/signup"
           >
             Sign up
           </a>
