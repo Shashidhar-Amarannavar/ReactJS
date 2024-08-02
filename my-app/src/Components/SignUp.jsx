@@ -74,7 +74,7 @@ function SignUp() {
                 }}
               />
               <div style={{ height: "4px" }}>
-                {errored.emailError && (
+                {errored.emailError && cred.emailId && (
                   <span className="error-text">{errored.emailError}</span>
                 )}
               </div>
@@ -120,7 +120,7 @@ function SignUp() {
                   setCred({ ...cred, password: e.target.value });
                 }}
               />
-              {errored.passwordError && (
+              {errored.passwordError && cred.password && (
                 <span className="error-text">{errored.passwordError}</span>
               )}
             </div>
@@ -138,7 +138,7 @@ function SignUp() {
                 }}
               />
               <div style={{ height: "4px" }}>
-                {errored.confirmFasswordError && (
+                {errored.confirmFasswordError && cred.confirmFassword && (
                   <span className="error-text">
                     {errored.confirmFasswordError}
                   </span>
@@ -175,10 +175,7 @@ function SignUp() {
           <div>
             <p className="pargrap3">Already have an account?</p>
           </div>
-          <a
-            className="signIn-link"
-            href="/"
-          >
+          <a className="signIn-link" href="/">
             Sign in
           </a>
         </div>

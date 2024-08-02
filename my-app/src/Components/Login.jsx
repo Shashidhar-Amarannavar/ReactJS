@@ -40,6 +40,10 @@ function Login() {
         emailError: "Please enter a valid email address"
       }));
     }
+
+    if (emailRegex.test(cred.emailId) && passwordRegex.test(cred.password)) {
+      alert("Login Successfull !!!");
+    }
   };
 
   return (
@@ -69,7 +73,7 @@ function Login() {
                 }}
               />
               <div style={{ height: "4px" }}>
-                {errored.emailError && (
+                {errored.emailError && cred.emailId && (
                   <span className="error-text">{errored.emailError}</span>
                 )}
               </div>
@@ -87,16 +91,13 @@ function Login() {
                 }}
               />
               <div style={{ height: "4px" }}>
-                {errored.passwordError && (
+                {errored.passwordError && cred.password && (
                   <span className="error-text">{errored.passwordError}</span>
                 )}
               </div>
             </div>
           </div>
-          <a
-            className="forgot-text"
-            href="/forgotpassword"
-          >
+          <a className="forgot-text" href="/forgotpassword">
             Forgot Password?
           </a>
           <button
@@ -112,10 +113,7 @@ function Login() {
           <div>
             <p className="pargrap3">Don't have an account?</p>
           </div>
-          <a
-            className="signIn-link"
-            href="/signup"
-          >
+          <a className="signIn-link" href="/signup">
             Sign up
           </a>
         </div>

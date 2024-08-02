@@ -40,7 +40,9 @@ function ForgotPassword() {
                 }}
               />
               <div style={{ height: "4px" }}>
-                {emailError && <span className="error-text">{emailError}</span>}
+                {emailError && emailId && (
+                  <span className="error-text">{emailError}</span>
+                )}
               </div>
             </div>
           </div>
