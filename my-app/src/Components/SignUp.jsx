@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import Images from "../Images/Employee-Time-Tracking-1400-1024x557.jpg";
+import Alert from "./Alert";
 
 const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const passwordRegex =
   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$/;
 
 function SignUp() {
+  const [showAlert, setAlert] = useState(false);
+
   const [cred, setCred] = useState({
     emailId: "",
     firstname: "",
@@ -44,6 +47,13 @@ function SignUp() {
           ...errored,
           confirmFasswordError: "Confirm password should match with password"
         }));
+
+    if (emailRegex.test(cred.emailId) && passwordRegex.test(cred.password)) {
+      setAlert(true);
+      setTimeout(() => {
+        setAlert(false);
+      }, 3000);
+    }
   };
 
   return (
@@ -172,6 +182,10 @@ function SignUp() {
           >
             Login
           </button>
+          <Alert
+            message="User has been created successfully.Please verify the email."
+            show={showAlert}
+          ></Alert>
           <div>
             <p className="pargrap3">Already have an account?</p>
           </div>

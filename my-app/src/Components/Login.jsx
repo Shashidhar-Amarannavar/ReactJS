@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import Images from "../Images/Employee-Time-Tracking-1400-1024x557.jpg";
+import Alert from "./Alert";
 
 const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const passwordRegex =
   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$/;
 
 function Login() {
+  const [showAlert, setAlert] = useState(false);
   const [cred, setCred] = useState({ emailId: "", password: "" });
   const [errored, setErrored] = useState({
     emailError: "",
@@ -42,7 +44,10 @@ function Login() {
     }
 
     if (emailRegex.test(cred.emailId) && passwordRegex.test(cred.password)) {
-      alert("Login Successfull !!!");
+      setAlert(true);
+      setTimeout(() => {
+        setAlert(false);
+      }, 3000);
     }
   };
 
@@ -110,6 +115,7 @@ function Login() {
           >
             Login
           </button>
+          <Alert message="Successfully logged in." show={showAlert}></Alert>
           <div>
             <p className="pargrap3">Don't have an account?</p>
           </div>
