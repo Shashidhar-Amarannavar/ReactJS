@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import Images from "../Images/Employee-Time-Tracking-1400-1024x557.jpg";
 import Alert from "./Alert";
 
@@ -7,6 +8,7 @@ const passwordRegex =
   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$/;
 
 function Login() {
+  const navigate = useNavigate();
   const [showAlert, setAlert] = useState(false);
   const [cred, setCred] = useState({ emailId: "", password: "" });
   const [errored, setErrored] = useState({
@@ -43,7 +45,8 @@ function Login() {
       }));
     }
 
-    if (emailRegex.test(cred.emailId) && passwordRegex.test(cred.password)) {
+    if (emailRegex.test(cred.emailId) && passwordRegex.test(cred.password)) {    
+      navigate('/organization')
       setAlert(true);
       setTimeout(() => {
         setAlert(false);
@@ -112,7 +115,7 @@ function Login() {
             type="submit"
             disabled={!(cred.emailId && cred.password)}
             onClick={displayData}
-          >
+            >
             Login
           </button>
           <Alert message="Successfully logged in." show={showAlert}></Alert>
