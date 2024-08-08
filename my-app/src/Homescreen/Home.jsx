@@ -1,35 +1,41 @@
-import React from "react";
+import React, { useEffect } from "react";
 import logo from "../Images/softsuave_tech_logo.jpg";
-import ButtonGroups from "./ButtonGroups";
-import { useState } from "react";
-import Organization from "./Organization";
-import Activity from "./Activity";
-import Projects from "./Projects";
-import Tasks from "./Tasks";
-import Reports from "./Reports";
+import { Outlet, NavLink, useLocation, useNavigate } from "react-router-dom";
 
-const buttons = ["Organization", "Activity", "Projects", "Tasks", "Reports"];
+const buttons = [
+  {
+    name: "Organizations",
+    label: "/organizations"
+  },
+  {
+    name: "Activity",
+    label: "/activity"
+  },
 
-const RenderComponents = ({ index }) => {
-  switch (index) {
-    case 0:
-      return <Organization />;
-    case 1:
-      return <Activity />;
-    case 2:
-      return <Projects />;
-    case 3:
-      return <Tasks />;
-    case 4:
-      return <Reports />;
-    default:
-      return <Organization />;
+  {
+    name: "Projects",
+    label: "/projects"
+  },
+
+  {
+    name: "Tasks",
+    label: "/tasks"
+  },
+
+  {
+    name: "Reports",
+    label: "/reports"
   }
-};
+];
 
 function Home() {
+  const location = useLocation();
+  const navigate = useNavigate();
 
-  const [isSelected, setSelected] = useState(0);
+  useEffect(() => {
+    return location !== buttons[0].label ? navigate(buttons[0].label) : null;
+  }, []);
+
   return (
     <div style={{ display: "flex", width: "100%" }}>
       <div className="left-side-box">
@@ -38,11 +44,20 @@ function Home() {
           <p className="title">BUSTLESPOT</p>
         </div>
         <div className="button-continer">
-          <ButtonGroups
-            buttons={buttons}
-            isSelected={isSelected}
-            setSelected={setSelected}
-          />
+          {buttons.map((button) => (
+            <nav>
+              <NavLink
+                to={button.label}
+                className={
+                  location.pathname === button.label
+                    ? "side-button-orange"
+                    : "side-button-grey"
+                }
+              >
+                {button.name}
+              </NavLink>
+            </nav>
+          ))}
         </div>
         <div style={{ display: "flex", flexDirection: "column" }}>
           <button className={"side-button-grey"}>Download</button>
@@ -53,7 +68,7 @@ function Home() {
       </div>
       <div className="right-side-box">
         <div className="headers"></div>
-        <RenderComponents index={isSelected} />
+        <Outlet />
       </div>
     </div>
   );
