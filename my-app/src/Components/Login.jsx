@@ -45,8 +45,8 @@ function Login() {
       }));
     }
 
-    if (emailRegex.test(cred.emailId) && passwordRegex.test(cred.password)) {    
-      navigate('/organization')
+    if (emailRegex.test(cred.emailId) && passwordRegex.test(cred.password)) {
+      navigate("/organizations");
       setAlert(true);
       setTimeout(() => {
         setAlert(false);
@@ -115,7 +115,7 @@ function Login() {
             type="submit"
             disabled={!(cred.emailId && cred.password)}
             onClick={displayData}
-            >
+          >
             Login
           </button>
           <Alert message="Successfully logged in." show={showAlert}></Alert>
