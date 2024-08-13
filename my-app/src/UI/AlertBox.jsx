@@ -4,7 +4,6 @@ import Alert from "@mui/material/Alert";
 
 function AlertBox(props) {
   const { severity, open, duration, handleClose, message } = props;
-  console.log({ open });
 
   return (
     <Snackbar open={open} autoHideDuration={duration} onClose={handleClose}>

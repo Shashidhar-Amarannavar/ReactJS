@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import Images from "../Images/Employee-Time-Tracking-1400-1024x557.jpg";
 
@@ -7,6 +7,7 @@ const passwordRegex =
   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$/;
 
 function Login() {
+  const inputRef = useRef(null);
   const navigate = useNavigate();
   const [cred, setCred] = useState({ emailId: "", password: "" });
   const [errored, setErrored] = useState({
@@ -16,12 +17,12 @@ function Login() {
 
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
-      event.preventDefault(); // Prevent form submission if it's inside a form
-      HandleSubmit();
+      event.preventDefault();
+      handleSubmit();
     }
   };
 
-  const HandleSubmit = (e) => {
+  const handleSubmit = (e) => {
     if (emailRegex.test(cred.emailId) || passwordRegex.test(cred.password)) {
       emailRegex.test(cred.emailId)
         ? setErrored((errored) => ({
@@ -51,10 +52,17 @@ function Login() {
     }
 
     if (emailRegex.test(cred.emailId) && passwordRegex.test(cred.password)) {
-      localStorage.setItem("loginStatus", true);
+      const fakeAuthToken = "123456";
+      localStorage.setItem("authToken", fakeAuthToken);
       navigate("/organizations", { state: { key: true } });
     }
   };
+
+  useEffect(() => {
+    if (inputRef.current) {
+      inputRef.current.focus();
+    }
+  }, []);
 
   return (
     <>
@@ -80,6 +88,7 @@ function Login() {
                 <input
                   type="text"
                   className="input-fields"
+                  ref={inputRef}
                   value={cred.emailId}
                   onChange={(e) => {
                     setCred({ ...cred, emailId: e.target.value });
@@ -123,7 +132,7 @@ function Login() {
               }
               type="submit"
               disabled={!(cred.emailId && cred.password)}
-              onClick={HandleSubmit}
+              onClick={handleSubmit}
             >
               Login
             </button>

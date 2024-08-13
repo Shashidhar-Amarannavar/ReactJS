@@ -29,8 +29,8 @@ const buttons = [
   }
 ];
 
-const handleStatus = () => {
-  localStorage.setItem("loginStatus", false);
+const handleLogout = () => {
+  localStorage.removeItem("authToken");
 };
 
 function Home() {
@@ -84,7 +84,7 @@ function Home() {
         </div>
         <div style={{ display: "flex", flexDirection: "column" }}>
           <button className={"side-button-grey"}>Download</button>
-          <a className="side-button-grey" href="/" onClick={handleStatus}>
+          <a className="side-button-grey" href="/" onClick={handleLogout}>
             Logout
           </a>
         </div>
