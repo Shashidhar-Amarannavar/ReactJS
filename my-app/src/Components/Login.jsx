@@ -1,19 +1,29 @@
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Images from "../Images/Employee-Time-Tracking-1400-1024x557.jpg";
+import AlertBox from "../UI/AlertBox";
+import Inputs from "../UI/Inputs";
 
 const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const passwordRegex =
   /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&#])[A-Za-z\d@$!%*?&#]{8,}$/;
 
 function Login() {
-  const inputRef = useRef(null);
   const navigate = useNavigate();
   const [cred, setCred] = useState({ emailId: "", password: "" });
+  const [loginError, setLoginError] = useState();
   const [errored, setErrored] = useState({
     emailError: "",
     passwordError: ""
   });
+
+  const handleEmailChange = (e) => {
+    setCred({ ...cred, emailId: e.target.value });
+  };
+
+  const handlePasswordChange = (e) => {
+    setCred({ ...cred, password: e.target.value });
+  };
 
   const handleKeyDown = (event) => {
     if (event.key === "Enter") {
@@ -52,21 +62,31 @@ function Login() {
     }
 
     if (emailRegex.test(cred.emailId) && passwordRegex.test(cred.password)) {
-      const fakeAuthToken = "123456";
-      localStorage.setItem("authToken", fakeAuthToken);
-      navigate("/organizations", { state: { key: true } });
+      if (cred.emailId.toLowerCase() === "shashi@qa.com") {
+        const fakeAuthToken = "123456";
+        localStorage.setItem("authToken", fakeAuthToken);
+        navigate("/organizations", { state: { key: true } });
+      } else {
+        setLoginError(true);
+      }
     }
   };
 
-  useEffect(() => {
-    if (inputRef.current) {
-      inputRef.current.focus();
-    }
-  }, []);
+  const handleClose = () => {
+    setLoginError(false);
+  };
+
 
   return (
     <>
       <div style={{ display: "flex", height: "100vh" }}>
+        <AlertBox
+          open={loginError}
+          duration={5000}
+          handleClose={handleClose}
+          severity={"error"}
+          message={"Invalid email or password."}
+        ></AlertBox>
         <div className="Card-size1">
           <img src={Images} alt="No-Image" className="Image-size" />
           <div style={{ marginLeft: "30%" }}>
@@ -82,45 +102,27 @@ function Login() {
               <p className="welcome-text">Welcome!</p>
               <p className="signIn-text">Sign in to your account</p>
             </div>
-            <div style={{ width: "100%" }}>
-              <label className="label-text">Email ID</label>
-              <div>
-                <input
-                  type="text"
-                  className="input-fields"
-                  ref={inputRef}
-                  value={cred.emailId}
-                  onChange={(e) => {
-                    setCred({ ...cred, emailId: e.target.value });
-                  }}
-                  onKeyDown={handleKeyDown}
-                />
-                <div style={{ height: "4px" }}>
-                  {errored.emailError && cred.emailId && (
-                    <span className="error-text">{errored.emailError}</span>
-                  )}
-                </div>
-              </div>
-            </div>
-            <div style={{ width: "100%", marginTop: "4%" }}>
-              <label className="label-text">Password</label>
-              <div>
-                <input
-                  onKeyDown={handleKeyDown}
-                  type="text"
-                  className="input-fields"
-                  value={cred.password}
-                  onChange={(e) => {
-                    setCred({ ...cred, password: e.target.value });
-                  }}
-                />
-                <div style={{ height: "4px" }}>
-                  {errored.passwordError && cred.password && (
-                    <span className="error-text">{errored.passwordError}</span>
-                  )}
-                </div>
-              </div>
-            </div>
+            <Inputs
+              label={"Email ID"}
+              value={cred.emailId}
+              handleChange={handleEmailChange}
+              focusText={true}
+              validationText={
+                errored.emailError && cred.emailId ? errored.emailError : null
+              }
+              handleKeyDown={handleKeyDown}
+            />
+            <Inputs
+              label={"Password"}
+              value={cred.password}
+              handleChange={handlePasswordChange}
+              validationText={
+                errored.passwordError && cred.password
+                  ? errored.passwordError
+                  : null
+              }
+              handleKeyDown={handleKeyDown}
+            />
             <a className="forgot-text" href="/forgotpassword">
               Forgot Password?
             </a>
