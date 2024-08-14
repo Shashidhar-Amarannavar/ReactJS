@@ -2,7 +2,8 @@ import React, { useState, useEffect, useRef } from "react";
 import logo from "../Images/softsuave_tech_logo.jpg";
 import { Outlet, NavLink, useLocation, useNavigate } from "react-router-dom";
 import AlertBox from "../UI/AlertBox";
-
+import Images from "../Images/SA.png";
+import MultipleSelectPlaceholder from '../UI/Dropdown'
 const buttons = [
   {
     name: "Organizations",
@@ -90,8 +91,16 @@ function Home() {
         </div>
       </div>
       <div className="right-side-box">
-        <div className="headers"></div>
-        <Outlet />
+        <div className="headers">
+          <div style={{display:'flex'}}>
+            <img className="profile-container" src={Images} alt="No-Image"></img>
+            <img className="profile-container" src={logo} alt="No-Image"></img>
+          </div>
+          <div className="organization-container">
+            <MultipleSelectPlaceholder />
+          </div>
+        </div>
+        <div><Outlet /></div>
       </div>
     </div>
   );
