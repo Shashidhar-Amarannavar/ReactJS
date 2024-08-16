@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Images from "../Images/Employee-Time-Tracking-1400-1024x557.jpg";
+import Inputs from "../UI/Inputs";
 
 const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const passwordRegex =
@@ -18,6 +19,10 @@ function SignUp() {
     passwordError: "",
     confirmFasswordError: ""
   });
+
+  const handleChange = (e, fieldName) => {
+    setCred({ ...cred, [fieldName]: e.target.value });
+  };
 
   const HandleSignUp = (e) => {
     emailRegex.test(cred.emailId)
@@ -65,53 +70,28 @@ function SignUp() {
             <p className="welcome-text">Welcome!</p>
             <p className="signIn-text">Sign up</p>
           </div>
-          <div style={{ width: "100%", marginTop: "0%" }}>
-            <label className="label-text">Email ID</label>
-            <div>
-              <input
-                type="text"
-                className="input-fields"
-                placeholder="Enter your email address"
-                value={cred.emailId}
-                onChange={(e) => {
-                  setCred({ ...cred, emailId: e.target.value });
-                }}
-              />
-              <div style={{ height: "4px" }}>
-                {errored.emailError && cred.emailId && (
-                  <span className="error-text">{errored.emailError}</span>
-                )}
-              </div>
-            </div>
-          </div>
-          <div style={{ width: "100%", marginTop: "3%" }}>
-            <label className="label-text">First name</label>
-            <div>
-              <input
-                type="text"
-                className="input-fields"
-                placeholder="Enter your first name"
-                value={cred.firstname}
-                onChange={(e) => {
-                  setCred({ ...cred, firstname: e.target.value });
-                }}
-              />
-            </div>
-          </div>
-          <div style={{ width: "100%", marginTop: "3%" }}>
-            <label className="label-text">Last name</label>
-            <div>
-              <input
-                type="text"
-                className="input-fields"
-                placeholder="Enter your last name"
-                value={cred.lastname}
-                onChange={(e) => {
-                  setCred({ ...cred, lastname: e.target.value });
-                }}
-              />
-            </div>
-          </div>
+          <Inputs
+            label={"Email ID"}
+            value={cred.emailId}
+            handleChange={(e) => handleChange(e, "emailId")}
+            focusText={true}
+            placeholder={"Enter your email address"}
+            validationText={
+              errored.emailError && cred.emailId ? errored.emailError : null
+            }
+          />
+          <Inputs
+            label={"First name"}
+            value={cred.firstname}
+            handleChange={(e) => handleChange(e, "firstname")}
+            placeholder={"Enter your first name"}
+          />
+          <Inputs
+            label={"Latst name"}
+            value={cred.lastname}
+            handleChange={(e) => handleChange(e, "lastname")}
+            placeholder={"Enter your last name"}
+          />
           <div style={{ width: "100%", marginTop: "3%" }}>
             <label className="label-text">Password</label>
             <div>
@@ -187,5 +167,4 @@ function SignUp() {
     </div>
   );
 }
-
 export default SignUp;

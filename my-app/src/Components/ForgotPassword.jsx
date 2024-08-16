@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Images from "../Images/Employee-Time-Tracking-1400-1024x557.jpg";
+import Inputs from "../UI/Inputs";
 
 const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
@@ -28,24 +29,15 @@ function ForgotPassword() {
             <p className="welcome-text">Welcome!</p>
             <p className="signIn-text">Sign in to your account</p>
           </div>
-          <div style={{ width: "100%" }}>
-            <label className="label-text">Email ID</label>
-            <div>
-              <input
-                type="text"
-                className="input-fields"
-                value={emailId}
-                onChange={(e) => {
-                  setemailId(e.target.value);
-                }}
-              />
-              <div style={{ height: "4px" }}>
-                {emailError && emailId && (
-                  <span className="error-text">{emailError}</span>
-                )}
-              </div>
-            </div>
-          </div>
+          <Inputs
+            label={"Email ID"}
+            value={emailId}
+            handleChange={(e) => {
+              setemailId(e.target.value);
+            }}
+            focusText={true}
+            validationText={emailError && emailId ? emailError : null}
+          />
           <a className="forgot-text" href="/">
             Sign in to your account
           </a>
