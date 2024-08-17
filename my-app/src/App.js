@@ -1,7 +1,9 @@
 import { Routes, Route } from "react-router-dom";
 import { Navigate } from "react-router-dom";
 import './App.css';
-import './Homescreen/Org.css'
+import './Homescreen/Org.css';
+import './Components/Common.css';
+import './UI/UI.css';
 import Login from './Components/Login';
 import SignUp from './Components/SignUp';
 import ForgotPassword from './Components/ForgotPassword';
@@ -12,6 +14,7 @@ import Projects from './Homescreen/Projects';
 import Tasks from './Homescreen/Tasks';
 import Reports from './Homescreen/Reports';
 import Nomatch from './Components/Nomatch';
+import CreateOrganization from './Components/CreateOrganization'
 
 function App() {
   const isAuthenticated = () => {
@@ -34,6 +37,7 @@ function App() {
           <Route path='projects' element={<Projects />} />
           <Route path='tasks' element={<Tasks />} />
           <Route path='reports' element={<Reports />} />
+        <Route path="profile" element={<CreateOrganization />}></Route>
         </Route>
         <Route path='*' element={<Nomatch />} />
       </Routes></>

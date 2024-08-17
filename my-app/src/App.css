@@ -92,18 +92,6 @@
   letter-spacing: 0.02957em;
 }
 
-.input-fields {
-  border: 1px solid rgba(255, 255, 255, 0.322);
-  border-radius: 4px;
-  height: 25px;
-  width: 95%;
-  color: white;
-  background-color: rgba(78, 73, 73, 0.719);
-  padding: 3px;
-  font-size: 14px;
-  margin-top: 1%;
-}
-
 .forgot-text {
   margin: 0% 0% 0% 75%;
   text-decoration: none;
@@ -117,44 +105,6 @@
   font-size: 14px;
   line-height: 16px;
   letter-spacing: 0.03333em;
-}
-
-.button-grey {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  line-height: 1.75;
-  letter-spacing: 0.02857em;
-  min-width: 64px;
-  padding: 3px 16px;
-  width: 97%;
-  margin: 3% 5% 3% 2%;
-  color: rgb(255, 255, 255);
-  border: none;
-  outline: none;
-  font-size: 18px;
-  border-radius: 40px;
-  background-color: grey;
-}
-
-.login-button {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  line-height: 1.75;
-  letter-spacing: 0.02857em;
-  min-width: 64px;
-  padding: 3px 16px;
-  width: 97%;
-  margin: 3% 5% 3% 2%;
-  color: rgb(255, 255, 255);
-  border: none;
-  outline: none;
-  font-size: 18px;
-  border-radius: 40px;
-  background-color: rgb(255, 93, 59);
 }
 
 .modal-content {
