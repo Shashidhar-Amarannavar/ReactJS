@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Images from "../Images/Employee-Time-Tracking-1400-1024x557.jpg";
 import Inputs from "../UI/Inputs";
+import ButtonComp from "../UI/ButtonComp";
 
 const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 
@@ -41,14 +42,12 @@ function ForgotPassword() {
           <a className="forgot-text" href="/">
             Sign in to your account
           </a>
-          <button
-            className={!emailId ? "button-grey" : "login-button"}
-            type="submit"
+          <ButtonComp
+            type={"sumbit"}
             disabled={!emailId}
-            onClick={handleResetPassword}
-          >
-            Reset Password
-          </button>
+            handleSubmit={handleResetPassword}
+            text={"Reset Password"}
+          />
         </div>
       </div>
     </div>

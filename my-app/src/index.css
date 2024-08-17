@@ -4,4 +4,6 @@ body {
   font-size: 1rem;
   line-height: 1.5;
   letter-spacing: 0.00938em;
+  font-weight: 400;
+  font-family: "Avenir Next LT Pro" !important;
 }

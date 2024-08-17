@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Images from "../Images/Employee-Time-Tracking-1400-1024x557.jpg";
 import Inputs from "../UI/Inputs";
+import ButtonComp from "../UI/ButtonComp";
 
 const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const passwordRegex =
@@ -24,7 +25,7 @@ function SignUp() {
     setCred({ ...cred, [fieldName]: e.target.value });
   };
 
-  const HandleSignUp = (e) => {
+  const handleSignUp = (e) => {
     emailRegex.test(cred.emailId)
       ? setErrored((errored) => ({
           ...errored,
@@ -130,19 +131,8 @@ function SignUp() {
               </div>
             </div>
           </div>
-          <button
-            className={
-              !(
-                cred.emailId &&
-                cred.firstname &&
-                cred.lastname &&
-                cred.password &&
-                cred.confirmFassword
-              )
-                ? "button-grey"
-                : "login-button"
-            }
-            type="submit"
+          <ButtonComp
+            type={"sumbit"}
             disabled={
               !(
                 cred.emailId &&
@@ -152,10 +142,9 @@ function SignUp() {
                 cred.confirmFassword
               )
             }
-            onClick={HandleSignUp}
-          >
-            Login
-          </button>
+            handleSubmit={handleSignUp}
+            text={"SignUp"}
+          />
           <div>
             <p className="pargrap3">Already have an account?</p>
           </div>

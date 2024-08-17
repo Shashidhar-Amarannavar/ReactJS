@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Images from "../Images/Employee-Time-Tracking-1400-1024x557.jpg";
 import AlertBox from "../UI/AlertBox";
 import Inputs from "../UI/Inputs";
+import ButtonComp from "../UI/ButtonComp";
 
 const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
 const passwordRegex =
@@ -33,6 +34,7 @@ function Login() {
   };
 
   const handleSubmit = (e) => {
+    console.log("on click trigger");
     if (emailRegex.test(cred.emailId) || passwordRegex.test(cred.password)) {
       emailRegex.test(cred.emailId)
         ? setErrored((errored) => ({
@@ -125,18 +127,12 @@ function Login() {
             <a className="forgot-text" href="/forgotpassword">
               Forgot Password?
             </a>
-            <button
-              className={
-                !(cred.emailId && cred.password)
-                  ? "button-grey"
-                  : "login-button"
-              }
-              type="submit"
+            <ButtonComp
+              type={"sumbit"}
               disabled={!(cred.emailId && cred.password)}
-              onClick={handleSubmit}
-            >
-              Login
-            </button>
+              handleSubmit={handleSubmit}
+              text={"Login"}
+            />
             <div>
               <p className="pargrap3">Don't have an account?</p>
             </div>

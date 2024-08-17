@@ -45,9 +45,14 @@ function Home() {
       setOpen(refValue.current);
       refValue.current = false;
     }
+   
+  }, [refValue]);
+
+  useEffect(() => {
     return location !== buttons[0].label ? navigate(buttons[0].label) : null;
     // eslint-disable-next-line
-  }, [refValue]);
+  }, [])
+  
 
   const handleClose = () => {
     setOpen(false);
