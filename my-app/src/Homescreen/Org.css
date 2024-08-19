@@ -24,7 +24,7 @@
   background-color: rgb(231, 229, 229);
 }
 
-.profile-container{
+.profile-container {
   display: flex;
   margin: 3px 1px;
   border: 1px solid rgb(209, 202, 202);
@@ -35,7 +35,7 @@
   height: 5vh;
 }
 
-.organization-container{
+.organization-container {
   display: flex;
   align-items: center;
   justify-content: end;
@@ -46,19 +46,22 @@
 
 .headers {
   display: flex;
-  justify-content:end;
+  justify-content: end;
   height: 6.5%;
   border-bottom: 0.5px solid rgb(78, 76, 76);
 }
 
 .administrative-border {
-  display: flex;
-  justify-content: space-between;
   margin: 20px;
   padding: 20px;
   box-shadow: rgba(200, 200, 200, 0.9) 0px 0px 14px;
   border-radius: 10px;
   background-color: white;
+}
+
+.administrative-inner {
+  display: flex;
+  justify-content: space-between;
 }
 
 .list-text {
@@ -132,4 +135,39 @@
 
 .side-button-grey:hover {
   color: rgb(255, 93, 59);
+}
+
+.org-list {
+  display: flex;
+  gap: 40px;
+  width: 380px;
+  height: 100px;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: rgba(200, 200, 200, 0.9) 0px 0px 10px;
+}
+
+.org-container {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  gap: 20px;
+  height: auto;
+  margin-top: 25px;
+}
+
+.org-profile {
+  display: flex;
+  height: 50px;
+  width: 50px;
+  align-items: center;
+  background-color: rgb(189, 189, 189);
+  box-shadow: rgba(112, 110, 110, 0.9) 0px 0px 10px;
+  border-radius: 50%;
+}
+
+.org-text {
+  margin: inherit;
+  font-weight: bold;
+  font-family: cursive;
 }
