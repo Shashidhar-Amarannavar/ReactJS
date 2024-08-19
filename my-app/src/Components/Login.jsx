@@ -34,7 +34,6 @@ function Login() {
   };
 
   const handleSubmit = (e) => {
-    console.log("on click trigger");
     if (emailRegex.test(cred.emailId) || passwordRegex.test(cred.password)) {
       emailRegex.test(cred.emailId)
         ? setErrored((errored) => ({
