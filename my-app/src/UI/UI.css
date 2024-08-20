@@ -1,10 +1,10 @@
 .input-fields {
-  border: 1px solid rgba(255, 255, 255, 0.322);
+  border: 1px solid rgb(53 50 50 / 79%);
   border-radius: 2px;
   height: 25px;
   width: 95%;
   color: white;
-  background-color: rgba(78, 73, 73, 0.719);
+  background-color: rgb(53 50 50 / 79%);
   padding: 3px;
   font-size: 14px;
   margin-top: 1%;
