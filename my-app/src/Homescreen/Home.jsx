@@ -59,7 +59,7 @@ function Home() {
   };
 
   return (
-    <div style={{ display: "flex", width: "100%" }}>
+    <div style={{ display: "flex", width: "100%", height:'100vh' }}>
       <AlertBox
         open={open}
         duration={5000}
@@ -105,7 +105,7 @@ function Home() {
             <MultipleSelectPlaceholder />
           </div>
         </div>
-        <div><Outlet /></div>
+        <div style={{overflow:'scroll', height:'92.5%'}}><Outlet /></div>
       </div>
     </div>
   );
