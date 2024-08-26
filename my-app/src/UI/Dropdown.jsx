@@ -17,14 +17,16 @@ export default function MultipleSelectPlaceholder() {
 
   return (
     <>
-      <FormControl sx={{ width: 200, mt: 0 }}>
+      <FormControl style={{ width: 200, marginTop: 0 }}>
         <Select
           displayEmpty
           value={personName}
           onChange={handleChange}
-          renderValue={(selected) => {
-
-            return selected.join(", ");
+          renderValue={(selected) => selected.join(", ")}
+          sx={{
+            "& .MuiSvgIcon-root": {
+              display: "none"
+            }
           }}
         >
           {names.map((name, index) => (

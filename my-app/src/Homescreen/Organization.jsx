@@ -1,13 +1,23 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
+import logo from "../Images/softsuave_tech_logo.jpg";
+import AlertBox from "../UI/AlertBox";
+import { setSuccess } from "../redux/createOrgSuccessSlice";
+import { useDispatch } from "react-redux";
 
 function Organization() {
+  const dispatch = useDispatch();
+  const createOrgSuccess = useSelector((state) => state.orgSuccess.success);
   const organizationName = useSelector((state) => state.organization.name);
   const organizationDescription = useSelector(
     (state) => state.organization.description
   );
   const navigate = useNavigate();
+
+  const handleClose = () => {
+    dispatch(setSuccess(false));
+  };
 
   const handleClick = () => {
     navigate("/profile");
@@ -30,7 +40,7 @@ function Organization() {
                 return (
                   <div key={index} style={{ width: "400px" }}>
                     <div className="org-list">
-                      <div className="org-profile">profile</div>
+                      <img src={logo} alt="" className="org-profile"></img>
                       <div>
                         <p className="org-text">Softsuave Organization</p>
                         <p style={{ marginTop: "0px", fontWeight: "lighter" }}>
@@ -81,16 +91,14 @@ function Organization() {
             <p className="text-size">Non-Administrative Organizations</p>
           </div>
           <div className="org-container">
-            <div style={{ width: "400px" }}>
-              <div className="org-list">
-                <div className="org-profile">profile</div>
-                <div>
-                  <p className="org-text">Demo Organization</p>
-                  <p style={{ marginTop: "0px" }}>User</p>
-                  <p style={{ fontFamily: "sans-serif" }}>
-                    Non adminstrative organization
-                  </p>
-                </div>
+            <div className="org-list">
+              <img src={logo} alt="" className="org-profile"></img>
+              <div>
+                <p className="org-text">Demo Organization</p>
+                <p style={{ marginTop: "0px" }}>User</p>
+                <p style={{ fontFamily: "sans-serif" }}>
+                  Non adminstrative organization
+                </p>
               </div>
             </div>
           </div>
@@ -104,6 +112,13 @@ function Organization() {
           </div>
         </div>
       </div>
+      <AlertBox
+        open={createOrgSuccess}
+        duration={5000}
+        handleClose={handleClose}
+        severity={"success"}
+        message={"Organsiation has been created successfully."}
+      ></AlertBox>
     </div>
   );
 }
