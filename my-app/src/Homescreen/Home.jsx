@@ -3,7 +3,7 @@ import logo from "../Images/softsuave_tech_logo.jpg";
 import { Outlet, NavLink, useLocation, useNavigate } from "react-router-dom";
 import AlertBox from "../UI/AlertBox";
 import Images from "../Images/SA.png";
-import MultipleSelectPlaceholder from '../UI/Dropdown'
+import MultipleSelectPlaceholder from "../UI/Dropdown";
 const buttons = [
   {
     name: "Organizations",
@@ -45,21 +45,19 @@ function Home() {
       setOpen(refValue.current);
       refValue.current = false;
     }
-   
   }, [refValue]);
 
   useEffect(() => {
     return location !== buttons[0].label ? navigate(buttons[0].label) : null;
     // eslint-disable-next-line
-  }, [])
-  
+  }, []);
 
   const handleClose = () => {
     setOpen(false);
   };
 
   return (
-    <div style={{ display: "flex", width: "100%", height:'100vh' }}>
+    <div style={{ display: "flex", width: "100%", height: "100vh" }}>
       <AlertBox
         open={open}
         duration={5000}
@@ -97,15 +95,21 @@ function Home() {
       </div>
       <div className="right-side-box">
         <div className="headers">
-          <div style={{display:'flex'}}>
-            <img className="profile-container" src={Images} alt="No-Image"></img>
+          <div style={{ display: "flex" }}>
+            <img
+              className="profile-container"
+              src={Images}
+              alt="No-Image"
+            ></img>
             <img className="profile-container" src={logo} alt="No-Image"></img>
           </div>
           <div className="organization-container">
             <MultipleSelectPlaceholder />
           </div>
         </div>
-        <div style={{overflow:'scroll', height:'92.5%'}}><Outlet /></div>
+        <div style={{ overflow: "scroll", height: "92.5%" }}>
+          <Outlet />
+        </div>
       </div>
     </div>
   );

@@ -3,39 +3,42 @@ import { useNavigate } from "react-router-dom";
 import FileUploadFile from "../UI/UploadFile";
 import ButtonComp from "../UI/ButtonComp";
 import { BackButton } from "../UI/ButtonComp";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { setOrganization, setDescription } from "../redux/organizationSlice";
+import { setSuccess } from "../redux/createOrgSuccessSlice";
+import AlertBox from "../UI/AlertBox";
 
 function CreateProfile() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  const organizationName = useSelector((state) => state.organization.name);
-  const organizationDescription = useSelector(
-    (state) => state.organization.description
-  );
-  const [name, setName] = useState(organizationName);
-  const [description, setDescriptionValue] = useState(organizationDescription);
+  const [toast, setToast] = useState();
+  const [message, setMessage] = useState();
+  const [name, setName] = useState();
+  const [description, setDescriptionValue] = useState();
 
-  const handleClick = () => {
+  const handleBackButton = () => {
     navigate(-1);
   };
 
-  const handleSubmit = (e) => {
-    dispatch(setOrganization(name));
-    dispatch(setDescription(description));
+  const handleClose = () => {
+    setToast(false);
   };
 
-  const handleNameChange = (e) => {
-    setName(e.target.value);
-  };
-
-  const handleDescriptionChange = (e) => {
-    setDescriptionValue(e.target.value);
+  const handleSubmit = () => {
+    if (name && description) {
+      dispatch(setOrganization(name));
+      dispatch(setDescription(description));
+      dispatch(setSuccess(true));
+      navigate("/organizations", { state: { created: true } });
+    } else {
+      setToast(true);
+      setMessage("Fill the mondatory fields");
+    }
   };
 
   return (
     <>
-      <BackButton handleClick={handleClick} />
+      <BackButton handleClick={handleBackButton} />
       <div className="container">
         <div className="org-title">Organization Details</div>
         <div style={{ display: "flex", padding: "10px" }}>
@@ -49,7 +52,7 @@ function CreateProfile() {
                   className="input-field"
                   type="text"
                   value={name}
-                  onChange={handleNameChange}
+                  onChange={(e) => setName(e.target.value)}
                 ></input>
               </div>
             </div>
@@ -64,7 +67,7 @@ function CreateProfile() {
                   className="textarea-field"
                   type="text"
                   value={description}
-                  onChange={handleDescriptionChange}
+                  onChange={(e) => setDescriptionValue(e.target.value)}
                 ></textarea>
               </div>
             </div>
@@ -83,6 +86,13 @@ function CreateProfile() {
           text={"SUBMIT"}
         />
       </div>
+      <AlertBox
+        open={toast}
+        duration={5000}
+        handleClose={handleClose}
+        severity={"error"}
+        message={message}
+      ></AlertBox>
     </>
   );
 }

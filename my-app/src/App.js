@@ -28,7 +28,7 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path='/' element={<Login />} />
+        {!isAuthenticated() && <Route path='/' element={<Login />} />}
         <Route path='signup' element={<SignUp />} />
         <Route path='forgotpassword' element={<ForgotPassword />} />
         <Route path='/' element={<ProtectedRoute element={<Home />} />} >
@@ -37,7 +37,7 @@ function App() {
           <Route path='projects' element={<Projects />} />
           <Route path='tasks' element={<Tasks />} />
           <Route path='reports' element={<Reports />} />
-        <Route path="profile" element={<CreateOrganization />}></Route>
+          <Route path="profile" element={<CreateOrganization />}></Route>
         </Route>
         <Route path='*' element={<Nomatch />} />
       </Routes></>
